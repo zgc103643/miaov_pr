@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟短信发送</title>
+    <link href="style/reset.css" rel="stylesheet">
+    <link href="style/index.css" rel="stylesheet">
+    <script src="script/index.js"></script>
+    <script>
+        window.onload = function () {
+            var oPic = document.getElementById("pic");
+            var oBtn = document.getElementById("btn");
+            var oUl = document.getElementById("cont");
+            var oText =document.getElementById("text");
+
+            var bOnOff = true;
+            oPic.onclick = function () {
+                if(bOnOff){
+                    oPic.src = "img/2.png";
+                    //bOnOff = false;
+                }
+                else{
+                    oPic.src = "img/1.png";
+                    //bOnOff = true;
+                }
+                bOnOff = !bOnOff;
+            }
+            oBtn.onclick = function () {
+                if(bOnOff){
+                    oUl.innerHTML += '<li class="fl clearfix"><img src="img/1.png"><p>'+oText.value+'</p></li>';
+                }
+                else{
+                    oUl.innerHTML += '<li class="fr clearfix"><img src="img/2.png"><p>'+oText.value+'</p></li>';
+                }
+                oText.value = "";
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="box_cont">
+            <ul id="cont">
+                <li class="fl clearfix">
+                    <img src="img/1.png">
+                    <p>好好学习啊，陈珂~</p>
+                </li>
+                <li class="fr clearfix">
+                    <img src="img/2.png">
+                    <p>money money ,come to me..</p>
+                </li>
+            </ul>
+            <form class="more">
+                <s id="people">
+                    <img src="img/1.png" id="pic">
+                </s>
+                <input type="text" id="text">
+                <input type="button" id="btn" value="发送">
+            </form>
+        </div>
+    </div>
+<script>
+
+
+</script>
+</body>
+</html>

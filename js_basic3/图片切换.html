@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <script>
+        window.onload = function () {
+            var oBtnFor = document.getElementById("forward");
+            var oBtnNex = document.getElementById("next");
+            var oPic = document.getElementById("pic")
+
+            oBtnFor.onclick = function () {
+                oPic.src = "img/"+1+".jpg";
+            }
+            oBtnNex.onclick = function () {
+                oPic.src = "img/"+3+".jpg";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form class="form-top">
+        <input type="button" value="顺序播放">
+        <input type="button" value="循环播放">
+    </form>
+    <p id="p-title">图片<span>顺序播放</span></p>
+    <div>
+        <img src="img/2.jpg" id="pic">
+        <p class="p-bottom">这是第<span>一</span>张图片</p>
+    </div>
+    <p id="p-num"><span>1</span>/5</p>
+    <form>
+        <input type="button" value="上一张" id="forward">
+        <input type="button" value="下一张" id="next">
+    </form>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,div{
+            margin:0px;
+            padding:0px;
+        }
+        #cont{
+            height: 500px;
+            width: 500px;
+            border:1px solid #000;
+            position:relative;
+        }
+        #cont div{
+            height:100px;
+            width:100px;
+            background-color: yellowgreen;
+            font-size:30px;
+            line-height: 100px;
+            text-align: center;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById("btn");
+            var oCont = document.getElementById("cont");
+            var str = "";
+            var l = 0;
+            var t = 0;
+            var num = 0;
+            //1,自动生成div;2,分析div的位置;3，
+            oBtn.onclick = function () {
+                str = "";
+                if(num == 0){
+                    for(var i = 0; i < 5; i ++){
+                        l = 100 * i;
+                         if(i <= 2){
+                         t = 100 * i;
+                         }else{
+                         t = 400 - i*100;
+                         }
+                        str +='<div style="left:'+l+'px;top:'+t+'px;">'+i+'</div>';
+                    }
+                }
+                else if(num == 1){
+                    for(var i = 0; i < 5; i ++){
+                        t = i * 100;
+                         if (i <= 2){
+                         l = 400 - i * 100;
+                         }else{
+                         l = i * 100;
+                         }
+                        str +='<div style="left:'+l+'px;top:'+t+'px;">'+i+'</div>';
+                    }
+                }
+                else if(num == 2){
+                    for(var i = 0; i < 5; i ++){
+                        l = i * 100;
+                         if (i <= 2){
+                         t = 400 - i * 100;
+                         }else{
+                         t = i * 100;
+                         }
+                        str +='<div style="left:'+l+'px;top:'+t+'px;">'+i+'</div>';
+                    }
+                }
+                else{
+                    for(var i = 0; i < 5; i ++){
+                        t = 100 * i;
+                        if( i <= 2){
+                            l = 100 * i;
+                        }
+                        else{
+                            l = 400 - 100 * i;
+                        }
+                        str +='<div style="left:'+l+'px;top:'+t+'px;">'+i+'</div>';
+                    }
+                }
+                num ++;
+               /* if(num == 4){
+                    num = 0;
+                }*/
+               num %= 4;
+
+                oCont.innerHTML = str;
+            }
+        }
+    </script>
+
+</head>
+<body>
+<input type="button" value="click" id="btn">
+<div id="cont">
+    <!--<div id="box0" class="box" style="left:0px;top:0px;">0</div>
+    <div id="box1" class="box" style="left:100px;top:100px;">1</div>
+    <div id="box2" class="box" style="left:200px;top:200px;">2</div>
+    <div id="box3" class="box" style="left:300px;top:100px;">3</div>
+    <div id="box4" class="box" style="left:400px;top:0px;">4</div>-->
+</div>
+</body>
+</html>
