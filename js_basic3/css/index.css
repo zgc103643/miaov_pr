@@ -15,3 +15,8 @@ form,p,div{
     background:#ccc;
     opacity:0.5;
 }
+
+#pic{
+    width:429px;
+    height: 403px;
+}

@@ -9,28 +9,101 @@
         window.onload = function () {
             var oBtnFor = document.getElementById("forward");
             var oBtnNex = document.getElementById("next");
-            var oPic = document.getElementById("pic")
+            var oPic = document.getElementById("pic");
+            var oCount = document.getElementById("iCount");
+            var oBtn1 = document.getElementById("order");
+            var oBtn2 = document.getElementById("loop");
+            var oStyle = document.getElementById("sPlay");
+            var bOrder = true;
+            var oBoNum = document.getElementById("sNum");
+            var json = {
+                "1":"一",
+                "2":"二",
+                "3":"三",
+                "4":"四",
+                "5":"五"
+            };
+            var sTemp="";//json中
+
+            /*bOrder为true时顺序播放，为false时循环播放*/
+            oBtn1.onclick = function () {
+                oStyle.innerHTML = oBtn1.value;
+                bOrder = true;
+            }
+            oBtn2.onclick = function () {
+                oStyle.innerHTML = oBtn2.value;
+                bOrder = false;
+            }
+
+            var str = "";
+            var iNum,iNext,iFor;
+            str = oPic.src;
+            iNum = parseInt(str.substr(-5,1));//当前图片的标号
+            //alert("num下一个:" + (iNum + 1));
 
             oBtnFor.onclick = function () {
-                oPic.src = "img/"+1+".jpg";
+                sTemp = "";
+                str = oPic.src;
+                iNum = parseInt(str.substr(-5,1));
+                iFor = iNum -1;
+                if(bOrder){
+                    if(iFor == 0){
+                        alert("已经是第一张啦");
+                        iFor = 1;
+                    }
+                }
+                else{
+                    if(iFor == 0){
+                        iFor = 5;
+                    }
+                }
+
+                oPic.src = "img/"+iFor+".jpg";
+                sTemp += iFor;
+                oCount.innerHTML = iFor;
+                //alert(json[sTemp]);
+                oBoNum.innerHTML = json[sTemp];
+
             }
             oBtnNex.onclick = function () {
-                oPic.src = "img/"+3+".jpg";
+                sTemp = "";
+                str = oPic.src;
+                iNum = parseInt(str.substr(-5,1));
+                iNext = iNum +1;
+                if(bOrder){
+                    if(iNext == 6){
+                        iNext = 5;
+                        alert("已经是最后一张啦");
+                    }
+                }
+                else{
+                    if(iNext == 6){
+                        iNext = 1;
+                    }
+                }
+
+                oPic.src = "img/"+iNext+".jpg";
+                sTemp += iNext;
+                oCount.innerHTML = iNext;
+                //alert(json[sTemp]);
+                oBoNum.innerHTML = json[sTemp];
             }
+
+
         }
     </script>
 </head>
 <body>
     <form class="form-top">
-        <input type="button" value="顺序播放">
-        <input type="button" value="循环播放">
+        <input type="button" value="顺序播放" id="order">
+        <input type="button" value="循环播放" id="loop">
     </form>
-    <p id="p-title">图片<span>顺序播放</span></p>
+    <p id="p-title">图片<span id="sPlay">顺序播放</span></p>
     <div>
-        <img src="img/2.jpg" id="pic">
-        <p class="p-bottom">这是第<span>一</span>张图片</p>
+        <img src="img/1.jpg" id="pic">
+        <p class="p-bottom">这是第<span id="sNum">一</span>张图片</p>
     </div>
-    <p id="p-num"><span>1</span>/5</p>
+    <p id="p-num"><span id="iCount">1</span>/5</p>
     <form>
         <input type="button" value="上一张" id="forward">
         <input type="button" value="下一张" id="next">
