@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script>
+        window.onload = function () {
+            var arr = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"];
+            var pl = ["这是第一张图片","这是第二张图片","这是第三张图片","这是第四张图片","这是第五张图片"];
+            var oFor = document.getElementById("forward");
+            var oNext = document.getElementById("next");
+            var oPic = document.getElementById("pic");
+            var oBoP = document.getElementById("oBoP");
+            var oNumP = document.getElementById("p-num");
+            var iNum = 0; //点击时，图片计数
+            var bOnOff = true;//true为顺序，false为循环
+
+            var oOrder = document.getElementById("order");
+            var oLoop = document.getElementById("loop");
+            var oTitle = document.getElementById("sPlay");
+
+            oOrder.onclick=function () {
+                bOnOff= true;
+                oTitle.innerHTML = oOrder.value;
+
+            }
+            oLoop.onclick=function () {
+                bOnOff= false;
+                oTitle.innerHTML = oLoop.value;
+
+            }
+
+
+            oNext.onclick = function () {
+                iNum ++;
+                if(iNum > arr.length -1){
+                    if(bOnOff){
+                        iNum = arr.length -1;
+                        alert("最后一张啦！");
+                    }
+                    else{
+                        iNum = 0;
+                    }
+
+                }
+                change();
+            }
+            oFor.onclick = function () {
+                iNum --;
+                if(iNum < 0 ){
+                    if(bOnOff){
+                        iNum = 0;
+                        alert("第一张啦！");
+                    }
+                    else{
+                        iNum = arr.length -1;
+                    }
+                }
+                change();
+            }
+            function change() {
+                oPic.src= arr[iNum];
+                oBoP.innerHTML = pl[iNum];
+                oNumP.innerHTML = (iNum + 1)+"/" + arr.length;
+
+            }
+        }
+    </script>
+</head>
+<body>
+<form class="form-top">
+    <input type="button" value="顺序播放" id="order">
+    <input type="button" value="循环播放" id="loop">
+</form>
+<p id="p-title">图片<span id="sPlay">顺序播放</span></p>
+<div>
+    <img src="img/1.jpg" id="pic">
+    <p class="p-bottom" id="oBoP">这是第一张图片</p>
+</div>
+<p id="p-num">1/5</p>
+<form>
+    <input type="button" value="上一张" id="forward">
+    <input type="button" value="下一张" id="next">
+</form>
+
+<img src="img/1.jpg" style="width:200px; height:200px">
+<img src="img/2.jpg" style="width:200px; height:200px">
+<img src="img/3.jpg" style="width:200px; height:200px">
+<img src="img/4.jpg" style="width:200px; height:200px">
+<img src="img/5.jpg" style="width:200px; height:200px">
+</body>
+</html>

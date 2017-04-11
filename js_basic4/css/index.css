@@ -1,0 +1,22 @@
+.box{
+    width:900px;
+    height: 480px;
+    background: url("../img/bg.jpg");
+    margin:30px auto;
+}
+.btn{
+
+}
+.first{
+    width:500px;
+    height:400px;
+    background-color: #edea4e;
+    float:left;
+}
+
+.second{
+    width:200px;
+    height:400px;
+    background-color: #edbdba;
+    float:left;
+}
