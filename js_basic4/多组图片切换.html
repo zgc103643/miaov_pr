@@ -4,7 +4,114 @@
     <meta charset="UTF-8">
     <title>多组图片切换</title>
     <link rel="stylesheet" href="css/index.css">
-    <script></script>
+    <script>
+        window.onload = function () {
+            var aImgL = ["belle.jpg","city.jpg","flower.jpg","rouse.jpg","smail.jpg"];
+            var aImgR = ["load.jpg","pencil.jpg","watch.jpg","water.jpg"];
+            var oBtnF= document.getElementById("first");
+            var oBtnS= document.getElementById("second");
+            var oImgL = document.getElementById("pic1");
+            var oImgR = document.getElementById("pic2");
+
+            var oPBN1 = document.getElementById("pBNum1");
+            var oPBN2 = document.getElementById("pBNum2");
+
+            var oPage1 = document.getElementById("pPage1");
+            var oPage2 = document.getElementById("pPage2");
+
+            var iNumL = 0;
+            oImgL.onclick = function () {
+                OnOff = true;
+                change3(oImgL);
+            }
+
+            var iNumR = 0;
+            oImgR.onclick = function () {
+
+                OnOff = true;
+                change3(oImgR);
+            }
+
+            var oBtnN = document.getElementById("next");
+            var oBtnL = document.getElementById("last");
+            var bOnOff = true;/*顺序播放*/
+
+            oBtnN.onclick = function () {
+                bOnOff = true;
+                change3(oImgL);
+                change3(oImgR);
+            }
+            oBtnL.onclick = function () {
+                bOnOff = false;
+                change3(oImgL);
+                change3(oImgR);
+            }
+
+            function change() {
+                oImgL.src = "img/img1/"+aImgL[iNumL];
+                oPBN1.innerHTML = iNumL + 1;
+                oPage1.innerHTML = (iNumL + 1) + "/" + aImgL.length;
+                /*alert(oPage1.innerHTML);*/
+            }
+
+            function change2(oImg) {
+                if(oImg === oImgL){
+                    iNumL ++;
+                    if(iNumL == aImgL.length){
+                        iNumL = 0;
+                    }
+                    oImgL.src = "img/img1/"+aImgL[iNumL];
+                    oPBN1.innerHTML = iNumL + 1;
+                    oPage1.innerHTML = (iNumL + 1) + "/" + aImgL.length;
+                }
+                else if(oImg === oImgR){
+                    iNumR++;
+                    if(iNumR == aImgR.length){
+                        iNumR = 0;
+                    }
+                    oImgR.src = "img/img2/"+aImgR[iNumR];
+                    oPBN2.innerHTML = iNumR + 1;
+                    oPage2.innerHTML = (iNumR + 1) + "/" + aImgR.length;
+                }
+            }/*没有加上一组和下一组效果*/
+            function change3(oImg) {
+                if(oImg === oImgL){
+                    if(bOnOff){
+                        iNumL ++;
+                        if(iNumL == aImgL.length){
+                            iNumL = 0;
+                        }
+                    }
+                    else{
+                        iNumL --;
+                        if(iNumL == -1){
+                            iNumL = aImgL.length -1;
+                        }
+                    }
+                    oImgL.src = "img/img1/"+aImgL[iNumL];
+                    oPBN1.innerHTML = iNumL + 1;
+                    oPage1.innerHTML = (iNumL + 1) + "/" + aImgL.length;
+                }
+                else if(oImg === oImgR){
+                    if(bOnOff){
+                        iNumR ++;
+                        if(iNumR == aImgR.length){
+                            iNumR = 0;
+                        }
+                    }
+                    else{
+                        iNumR --;
+                        if(iNumR == -1){
+                            iNumR = aImgR.length -1;
+                        }
+                    }
+                    oImgR.src = "img/img2/"+aImgR[iNumR];
+                    oPBN2.innerHTML = iNumR + 1;
+                    oPage2.innerHTML = (iNumR + 1) + "/" + aImgR.length;
+                }
+            }/*加了上一组和下一组效果*/
+        }
+    </script>
 </head>
 <body>
     <div class="box">
@@ -13,14 +120,14 @@
             <input type="button" value="下一组" id="next">
         </form>
         <div class="first">
-            <img src="img/img1/belle.jpg">
-            <p>第一组 第1张</p>
-            <p>1/5</p>
+            <img src="img/img1/belle.jpg" id="pic1">
+            <p class="pBttom1">第一组 第<span id="pBNum1">1</span>张</p>
+            <p id="pPage1">1/5</p>
         </div>
         <div class="second">
-            <!--<img src="img/img2/load.jpg">-->
-            <p>第二组 第1张</p>
-            <p>1/4</p>
+            <img src="img/img2/load.jpg" id="pic2">
+            <p class="pBttom2">第二组 第<span id="pBNum2">1</span>张</p>
+            <p id="pPage2">1/4</p>
         </div>
 
     </div>

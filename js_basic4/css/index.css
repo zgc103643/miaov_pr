@@ -1,6 +1,6 @@
 .box{
-    width:900px;
-    height: 480px;
+    width:1000px;
+    height: 498px;
     background: url("../img/bg.jpg");
     margin:30px auto;
 }
@@ -8,15 +8,30 @@
 
 }
 .first{
-    width:500px;
-    height:400px;
+    width:550px;
+    height:450px;
     background-color: #edea4e;
     float:left;
+    margin-left:50px;
+    text-align: center;
+}
+.first img{
+    width:500px;
+    height:300px;
+    margin-top:40px;
 }
 
 .second{
-    width:200px;
-    height:400px;
+    width:300px;
+    height:450px;
     background-color: #edbdba;
     float:left;
+    margin-left:50px;
+    text-align: center;
+}
+
+.second img{
+    width:250px;
+    height:300px;
+    margin-top:40px;
 }
