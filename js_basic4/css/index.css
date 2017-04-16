@@ -14,6 +14,7 @@
     float:left;
     margin-left:50px;
     text-align: center;
+    position: relative;
 }
 .first img{
     width:500px;
@@ -28,10 +29,44 @@
     float:left;
     margin-left:50px;
     text-align: center;
+    position: relative;
 }
 
 .second img{
     width:250px;
     height:300px;
     margin-top:40px;
+}
+/*遮罩层*/
+#f-search1,#s-search1{
+    position: absolute;
+    background:transparent;
+    width:250px;
+    height:300px;
+    top:40px;
+    left:25px;
+    /*opacity:0.5;*/
+}
+#f-search2,#s-search2{
+    position: absolute;
+    background: transparent;
+    width:250px;
+    height:300px;
+    top:40px;
+    left:275px;
+    /*opacity:0.5;*/
+}
+
+#s-search1{
+    width:125px;
+    height:300px;
+   /* opacity:0.5;*/
+}
+
+#s-search2{
+    width:125px;
+    height:300px;
+    /*opacity:0.5;*/
+    left:150px;
+    top:40px;
 }

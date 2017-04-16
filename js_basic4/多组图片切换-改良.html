@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>多组图片切换</title>
+    <title>多组图片切换-改良</title>
     <link rel="stylesheet" href="css/index.css">
     <script>
         window.onload = function () {
@@ -22,16 +22,28 @@
             var oLeftSl = document.getElementById("f-search1");
             var oLeftSr = document.getElementById("f-search2");
 
+            var oRightSl = document.getElementById("s-search1");
+            var oRightSr = document.getElementById("s-search2");
+
             var iNumL = 0;
-            oImgL.onclick = function () {
-                OnOff = true;
+            oLeftSl.onclick = function () {
+                bOnOff = false;
+                change3(oImgL);
+            }
+            oLeftSr.onclick = function () {
+                bOnOff = true;
                 change3(oImgL);
             }
 
             var iNumR = 0;
-            oImgR.onclick = function () {
+            oRightSl.onclick = function () {
 
-                OnOff = true;
+                bOnOff = false;
+                change3(oImgR);
+            }
+            oRightSr.onclick = function () {
+
+                bOnOff = true;
                 change3(oImgR);
             }
 
@@ -117,26 +129,26 @@
     </script>
 </head>
 <body>
-    <div class="box">
-        <form class="btn">
-            <input type="button" value="上一组" id="last">
-            <input type="button" value="下一组" id="next">
-        </form>
-        <div class="first">
-            <img src="img/img1/belle.jpg" id="pic1">
-            <div id="f-search1"></div>
-            <div id="f-search2"></div>
-            <p class="pBttom1">第一组 第<span id="pBNum1">1</span>张</p>
-            <p id="pPage1">1/5</p>
-        </div>
-        <div class="second">
-            <img src="img/img2/load.jpg" id="pic2">
-            <div id="s-search1"></div>
-            <div id="s-search2"></div>
-            <p class="pBttom2">第二组 第<span id="pBNum2">1</span>张</p>
-            <p id="pPage2">1/4</p>
-        </div>
-
+<div class="box">
+    <form class="btn">
+        <input type="button" value="上一组" id="last">
+        <input type="button" value="下一组" id="next">
+    </form>
+    <div class="first">
+        <img src="img/img1/belle.jpg" id="pic1">
+        <div id="f-search1"></div>
+        <div id="f-search2"></div>
+        <p class="pBttom1">第一组 第<span id="pBNum1">1</span>张</p>
+        <p id="pPage1">1/5</p>
     </div>
+    <div class="second">
+        <img src="img/img2/load.jpg" id="pic2">
+        <div id="s-search1"></div>
+        <div id="s-search2"></div>
+        <p class="pBttom2">第二组 第<span id="pBNum2">1</span>张</p>
+        <p id="pPage2">1/4</p>
+    </div>
+
+</div>
 </body>
 </html>

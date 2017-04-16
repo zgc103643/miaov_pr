@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>擦除图片</title>
+    <link href="css/index.css" rel="stylesheet">
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("div1");
+            var l=0;
+            var t = 0;
+
+            /*找到要插入的div：算div的left和top值*/
+            var str = "";
+            for(var i = 0; i < 100 ; i ++){
+                /*str +=*/
+                l = (i % 10) * 50;
+                t = Math.floor(i / 10) * 50;
+                str += '<div style="left:'+l+'px;top:'+t+'px"></div>';
+            }
+            oDiv.innerHTML = str;
+
+            /*给div添加onmouseover事件*/
+            var aDiv = oDiv.getElementsByTagName("div");//获取蓝色方块的div
+            for(var j = 0; j < aDiv.length; j ++){
+                aDiv[j].onmouseover = function () {
+                    this.style.transform = "scale(0)";
+                    //this.style.opacity = 0;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <!--<div style="left:0px;top:0px"></div>
+    <div style="left:50px;top:0px"></div>
+    <div style="left:100px;top:0px"></div>
+    <div style="left:150px;top:0px"></div>
+    <div style="left:200px;top:0px"></div>
+    <div style="left:250px;top:0px"></div>
+    <div style="left:300px;top:0px"></div>
+    <div style="left:350px;top:0px"></div>
+    <div style="left:400px;top:0px"></div>
+    <div style="left:450px;top:0px"></div>-->
+</div>
+</body>
+</html>

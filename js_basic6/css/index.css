@@ -1,0 +1,20 @@
+div,p,ul{
+    margin:0px;
+    padding:0px;
+}
+div{
+    width:100px;
+}
+li{
+    list-style: none;
+    margin-left:10px;
+}
+.active{
+    background:coral;
+}
+p{
+    background:cornflowerblue;
+}
+ul{
+    display: none;
+}

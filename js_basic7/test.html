@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style></style>
+    <script>
+        window.onload = function () {
+            var a = [12,4,5,89,3,12];
+
+            Array.prototype.min = function () {
+                var min = this[0];
+                for(var i = 0; i < this.length; i ++){
+                    if(this[i] < min){
+                        min = this[i];
+                    }
+                }
+                return min;
+            }
+            alert(a.min());
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
