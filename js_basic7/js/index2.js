@@ -31,6 +31,7 @@ window.onload = function () {
             aCount[t].innerHTML = aCountTemp[t];
             calNum();
             calCount();
+            maxPrice();
         }
 
     }
@@ -44,6 +45,7 @@ window.onload = function () {
             aCount[r].innerHTML = aCountTemp[r];
             calNum();
             calCount();
+            maxPrice();
         }
     }
 
@@ -75,7 +77,24 @@ window.onload = function () {
         }
         oSumCount.innerHTML = iSumCount;
     }
+
     function maxPrice() {
-        iExPrice.innerHTML = aPrice.min();
+        /*总金额/个数，值最大的就是最大单价*/
+        var arr = [];
+        var j = 0;
+        for(var i = 0; i < aCountTemp.length; i ++){
+            if(aCountTemp[i]){
+                arr[j] = aCountTemp[i] / aNumTemp[i];
+                j++;
+            }
+        }
+
+        var max = arr[0];
+        for(var i = 1; i < arr.length; i ++){
+            if(max < arr[i])
+                max = arr[i];
+        }
+        //alert(max) ;
+        iExPrice.innerHTML = max;
     }
 }
