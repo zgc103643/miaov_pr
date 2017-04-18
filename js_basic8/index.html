@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字搬运工</title>
+    <style>
+        #box1{
+            width:300px;
+            height:300px;
+            border:5px solid darkseagreen;
+            float: left;
+            position: relative;
+        }
+        #box1 p{
+            /*position: absolute;
+            left:-10px;*/
+        }
+        #box3{
+            width:300px;
+            height:300px;
+            border:5px solid darkseagreen;
+            float: left;
+            position: relative;
+        }
+        #box2{
+            float:left;
+            text-align: center;
+           /* background: #49bccc;*/
+        }
+        #box2 span{
+            display: inline-block;
+            width:10px;
+            height:10px;
+            border-radius: 5px;
+        }
+        .normal{
+            background-color:#ccc;
+        }
+        .active{
+            background-color: #57ccc9;
+        }
+        input{
+            background-color: #edbdba;
+            width:100px;
+            margin:20px 100px;
+        }
+        .page{
+            position: absolute;
+            left:0;
+            bottom: 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var aInput = document.getElementsByTagName("input");//2个按钮
+            var aP = document.getElementsByTagName("p");//文字
+            var oBox1 = document.getElementById("box1");//第一个文字框
+            var oBox3 = document.getElementById("box3");//第三个文字框
+            var aPageL = oBox1.getElementsByTagName("span");//第一个页码
+            var aPageR = oBox3.getElementsByTagName("span");//第二个页码
+            var timer = null;
+
+            aPageL[1].innerHTML = aP[0].innerHTML.length;
+            aPageR[1].innerHTML = aP[1].innerHTML.length;
+
+            var oBox2 = document.getElementById("box2");
+            var aDot = oBox2.getElementsByTagName("span");//小点
+            var iChat = 0; //动态移动字的数目
+
+
+            var iPageL0,iPageL1,iPageR0,iPageR1;
+
+            /*文字从左到右*/
+            aInput[0].onclick = function () {
+                iChat = 0;
+                if(check(aP[0])){
+                    alert("左边没有可搬运的文字了！")
+                }
+                else{
+                    timer = setInterval(function () {
+                        aP[1].innerHTML +=  aP[0].innerHTML.charAt(0);
+                        aP[0].innerHTML = aP[0].innerHTML.substring(1);
+                        document.title = aP[0].innerHTML.length;
+
+                        getPageL();
+                        changeButton();
+                        iChat++;
+
+                        if(aP[0].innerHTML.length == 0){
+                            //alert("over!");
+                            clearInterval(timer);/* 执行完本次之后就不执行 */
+                           // alert("11!");
+                        }
+
+                    },100);
+                }
+            }
+            /*文字从右到左*/
+            aInput[1].onclick = function () {
+                if(check(aP[1])){
+                    alert("右边没有可搬运的文字了！")
+                }
+                else{
+                    timer = setInterval(function () {
+                        aP[0].innerHTML +=  aP[1].innerHTML.charAt(0);
+                        aP[1].innerHTML = aP[1].innerHTML.substring(1);
+                        document.title = aP[1].innerHTML.length;
+
+                        getPageR();
+                        changeButton();
+                        iChat ++;
+
+                        if(aP[1].innerHTML.length == 0){
+                           // alert("over!");
+                            clearInterval(timer);/* 执行完本次之后就不执行 */
+                            //alert("22!");
+                        }
+
+                    },100);
+                }
+            }
+            function getPageL() {/*获取左右字长*/
+                aPageL[0].innerHTML = aP[0].innerHTML.length;/*左边第1个数字*/
+                aPageR[0].innerHTML = aP[1].innerHTML.length;/*右边第1个数字*/
+                aPageR[1].innerHTML = aP[1].innerHTML.length;/*右边第2个数字*/
+            }
+            function getPageR() {/*获取左右字长*/
+                aPageR[0].innerHTML = aP[1].innerHTML.length;/*右边第1个数字*/
+                aPageL[0].innerHTML = aP[0].innerHTML.length;/*左边第1个数字*/
+                aPageL[1].innerHTML = aP[0].innerHTML.length;/*左边第2个数字*/
+            }
+            function changeButton() {/*点的样式动态改变*/
+                for(var i = 0; i < aDot.length; i ++){
+                    aDot[i].className = "normal";
+                }
+                aDot[iChat % 5].className="active";
+            }
+            function check(obj) {/*检查文字长度是否为空*/
+                if(obj.innerHTML.length == 0)
+                    return true;
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box1">
+    <p>
+        我现在已经养成了一种习惯，就是每三二天要找你说几句不想对别人说的话。当然还有更多的话没有说出口来，但是只要我把它带到了你面前，我走开的时候自己就满意了，这些念头就不会再折磨我了。
+    </p>
+    <div class="page"><span>0</span>/<span>100</span></div>
+</div>
+<div id="box2">
+    <input type="button" value="→"><br/>
+    <input type="button" value="←"><br/>
+    <span class="normal"></span>
+    <span class="normal"></span>
+    <span class="normal"></span>
+    <span class="normal"></span>
+    <span class="normal"></span>
+</div>
+<div id="box3">
+    <p></p>
+    <div class="page"><span>0</span>/<span>100</span></div>
+</div>
+</body>
+</html>
