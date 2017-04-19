@@ -72,7 +72,7 @@
 
             /*文字从左到右*/
             aInput[0].onclick = function () {
-                iChat = 0;
+                clearInterval(timer);//连续点击的时候，清掉之前定时器，重新开
                 if(check(aP[0])){
                     alert("左边没有可搬运的文字了！")
                 }
@@ -80,7 +80,7 @@
                     timer = setInterval(function () {
                         aP[1].innerHTML +=  aP[0].innerHTML.charAt(0);
                         aP[0].innerHTML = aP[0].innerHTML.substring(1);
-                        document.title = aP[0].innerHTML.length;
+                        //document.title = aP[0].innerHTML.length;
 
                         getPageL();
                         changeButton();
@@ -88,6 +88,8 @@
 
                         if(aP[0].innerHTML.length == 0){
                             //alert("over!");
+                            document.title = iChat;
+
                             clearInterval(timer);/* 执行完本次之后就不执行 */
                            // alert("11!");
                         }
@@ -97,6 +99,7 @@
             }
             /*文字从右到左*/
             aInput[1].onclick = function () {
+                clearInterval(timer);//连续点击的时候，清掉之前定时器，重新开
                 if(check(aP[1])){
                     alert("右边没有可搬运的文字了！")
                 }
@@ -111,7 +114,8 @@
                         iChat ++;
 
                         if(aP[1].innerHTML.length == 0){
-                           // alert("over!");
+                            //alert("over!");
+                            document.title = iChat;
                             clearInterval(timer);/* 执行完本次之后就不执行 */
                             //alert("22!");
                         }
