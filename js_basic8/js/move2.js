@@ -18,28 +18,36 @@ window.onload = function () {
 
     /*给文字包span*/
     for (var i = 0; i < str.length; i++) {
-        str1 += '<span style="left:' + (i % 36 * 16) + 'px;top:' + (Math.floor(i / 36) * 30) + 'px;">' + str[i] + '</span>';
+        str1 += '<span style="left:' + (i % 36 * 16) + 'px;top:' + (Math.floor(i / 36) * 30) + 'px;">' + str.charAt(i) + '</span>';
     }
     cont.innerHTML = str1;
 
     /*给按钮添加点击事件*/
-    timer = oBtn1.onclick = function () {
+    oBtn1.onclick = function () {
+        clearInterval(timer);//点击时清除定时器，以让鼠标可以连续点击
         iNum = 0;
-        for (var i = 0; i < spans.length; i++) {
-            setInterval(function () {
-                spans[iNum].style.top = Math.floor(iNum / 36) * 30 + 240 + 'px';
-                spans[iNum].style.color = "red";
+        timer = setInterval(function () {
 
-                if (iNum == spans.length) {
-                    clearInterval(timer);
-                }
-
-            }, 30);
+            spans[iNum].style.top = Math.floor(iNum / 36) * 30 + 240 + 'px';
+            spans[iNum].style.color = "red";
             iNum++;
-        }
+            if(iNum == spans.length){
+                clearInterval(timer);
+            }
+        }, 30);
+
 
     }
     oBtn2.onclick = function () {
-
+        clearInterval(timer);
+        iNum = 0;
+        timer = setInterval(function () {
+            spans[iNum].style.top = Math.floor(iNum / 36) * 30 + 'px';
+            spans[iNum].style.color = "";
+            iNum++;
+            if(iNum == spans.length){
+                clearInterval(timer);
+            }
+        },30);
     }
 }
