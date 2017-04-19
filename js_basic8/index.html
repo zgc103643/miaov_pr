@@ -72,7 +72,7 @@
 
             /*文字从左到右*/
             aInput[0].onclick = function () {
-                iChat = 0;
+                clearInterval(timer);
                 if(check(aP[0])){
                     alert("左边没有可搬运的文字了！")
                 }
@@ -89,14 +89,16 @@
                         if(aP[0].innerHTML.length == 0){
                             //alert("over!");
                             clearInterval(timer);/* 执行完本次之后就不执行 */
-                           // alert("11!");
+                           alert("11!");
                         }
 
                     },100);
                 }
+                alert("l---定时器完~");
             }
             /*文字从右到左*/
             aInput[1].onclick = function () {
+                clearInterval(timer);
                 if(check(aP[1])){
                     alert("右边没有可搬运的文字了！")
                 }
@@ -113,11 +115,12 @@
                         if(aP[1].innerHTML.length == 0){
                            // alert("over!");
                             clearInterval(timer);/* 执行完本次之后就不执行 */
-                            //alert("22!");
+                            alert("22!");
                         }
 
                     },100);
                 }
+                alert("2---定时器完~");
             }
             function getPageL() {/*获取左右字长*/
                 aPageL[0].innerHTML = aP[0].innerHTML.length;/*左边第1个数字*/
