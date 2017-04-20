@@ -6,6 +6,7 @@ window.onload = function () {
     var oUl1 = document.getElementById("ul1");
     var aDivs = oUl1.getElementsByTagName("div");
     var aLi = oUl1.getElementsByTagName("li");
+    //var iNum  = 0;
 
     var old = "";
 
@@ -14,6 +15,12 @@ window.onload = function () {
     play();
     /*加定时器，自动刷新*/
     setInterval(function () {
+        oImg1.src = "img/"+"colon"+".JPG";
+        oImg2.src = "img/"+"colon"+".JPG";
+        setTimeout(function () {
+            oImg1.src = "img/"+"colon1"+".JPG";
+            oImg2.src = "img/"+"colon1"+".JPG";
+        },500);
         play();
     },1000);
 
@@ -28,17 +35,11 @@ window.onload = function () {
         var iSec = oDate.getSeconds();
         var sTime = toZero(iHour) + toZero(iMin) + toZero(iSec);
         //alert(sTime);
-
-        oImg1.src = "img/"+"colon"+".JPG";
-        oImg2.src = "img/"+"colon"+".JPG";
-        setTimeout(function () {
-            oImg1.src = "img/"+"colon1"+".JPG";
-            oImg2.src = "img/"+"colon1"+".JPG";
-        },500);
         for(var i = 0; i < sTime.length; i ++){
             if(old[i] != sTime[i]){
                 slide(i,sTime);
             }
+            console.log(sTime);
         }
         old=sTime;
     }
