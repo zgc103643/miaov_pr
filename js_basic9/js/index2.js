@@ -20,10 +20,7 @@ window.onload = function () {
         changeImg(4,oSec);
 
         /*分变化*/
-        var aImg2 = aLi[2].getElementsByTagName("img");
-        var str2= toZero(oMin);
-        aImg2[0].src = "img/"+str2[0]+".JPG";
-        aImg2[1].src = "img/"+str2[1]+".JPG";
+        changeImg(2,oMin);
 
         /*小时变化*/
         changeImg(0,oHour);
