@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>表单渲染</title>
+    <script src="js/1.js"></script>
     <style>
         #tab{
             border:5px solid #333;
+            border-collapse:collapse;
         }
         #tab th,#tab td{
             width:200px;
@@ -13,21 +15,37 @@
             border:1px solid #333;
         }
         #tab thead{
-            background: #ccc;
+            background: #93e9f3;
         }
     </style>
-    <script src="js/1.js"></script>
+    <link rel="stylesheet" href="css/1.css">
+
 </head>
 <body>
+<input type="checkbox" id="input1"><span>全选</span>
     <table id="tab">
         <thead>
-            <th>商品全选</th>
-            <th>商品编号</th>
-            <th>商品名称</th>
-            <th>商品价格</th>
-            <th>商品数量</th>
-            <th>商品删除</th>
+            <tr>
+                <!--<th>选择</th>-->
+                <th>商品编号</th>
+                <th>商品名称</th>
+                <th>商品价格</th>
+                <th>商品数量</th>
+            </tr>
         </thead>
+        <tbody>
+       <!-- <tr>
+            <input type="checkbox">
+            <td>11</td>
+            <td>22</td>
+            <td>33</td>
+            <td>44</td>
+        </tr>-->
+        </tbody>
     </table>
+<div>
+    <p></p>
+    <p></p>
+</div>
 </body>
 </html>
