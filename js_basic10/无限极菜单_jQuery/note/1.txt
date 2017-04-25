@@ -1,0 +1,6 @@
+笔记：
+1，文章地址：http://www.jb51.net/article/85456.htm
+
+知识点：
+1，jQuery的hover方法： $(selector).hover(inFunction,outFunction)
+2,find方法

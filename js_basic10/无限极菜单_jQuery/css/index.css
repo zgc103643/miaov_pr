@@ -1,0 +1,98 @@
+a {
+    text-decoration: none;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*定义菜单*/
+
+.Menue li {
+    background: #111;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    float: left;
+    margin-right: 5px;
+    width: 100px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Menue li a {
+    color: #fff;
+    font-size: 14px;
+    display: block;
+}
+
+/*下拉菜单样式*/
+
+ul.sub_menu {
+    position: absolute;
+    width: 100px;
+    display: none;
+    z-index: 999;
+}
+
+.Menue li ul.sub_menu li {
+    background: none;
+    color: #555;
+    font-size: 12px;
+    border-bottom: 1px #333 solid;
+    position: relative;
+    width: 100px;
+    height: 30px;
+}
+
+.Menue li ul.sub_menu li.last {
+    border-bottom: none;
+}
+
+/*js会对最后一个li添加该class，去掉border-bottom效果*/
+
+.Menue li ul.sub_menu li a {
+    background: #222;
+    color: #888;
+    display: block;
+    height: 30px;
+}
+
+.Menue li ul.sub_menu li a:hover, .Menue li ul.sub_menu li a.now {
+    background: #f90;
+    color: #fff;
+}
+
+.Menue li.now, .Menue li.current {
+    background: #f60;
+    color: #fff;
+}
+
+/*如果有下拉菜单添加的class*/
+
+.hasmenu {
+    background: url(arrow.png) no-repeat right;
+    padding-right: 15px;
+}
+
+/*主导航箭头向下*/
+
+.Menue li a.hasmenu {
+    background: url(arrow.png) no-repeat right;
+    padding-right: 15px;
+    background-position: right -30px;
+}
+
+/*下拉菜单箭头向右*/
+
+.Menue li ul.sub_menu li a.hasmenu {
+    background: #222 url(arrow.png) no-repeat right top;
+}
+
+.Menue li ul.sub_menu li a.hasmenu:hover {
+    background: #f90 url(arrow.png) no-repeat right top;
+    color: #fff;
+}
