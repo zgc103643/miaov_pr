@@ -1,0 +1,44 @@
+.hot {
+    color: deepskyblue;
+   /* background-color: #e8a2f3;*/
+    cursor: default;
+}
+
+#cont {
+    width: 600px;
+    margin: 0 auto;
+}
+
+#cont h2 {
+    margin-top: 30px;
+}
+
+#cont p {
+    text-indent: 2em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 2em;
+
+}
+
+#tips {
+    background-color: #3bdef3;
+    display: none;
+    width: 200px;
+    height: 150px;
+    border: 2px solid #ffdfea;
+    border-radius: 10px;
+    position: absolute;
+}
+
+#tips p {
+    /*background-color: #3bdef3;*/
+    font-size: 15px;
+    padding:10px;
+    color: #ff0b20;
+}
+#tips a{
+    position: absolute;
+    bottom:10px;
+    right:10px;
+}

@@ -67,6 +67,7 @@ textarea {
     display:table-cell;
     vertical-align: middle;
     text-align: left;
+    width:310px;
 }
 .mes-out p{
     background-color: #594c94;

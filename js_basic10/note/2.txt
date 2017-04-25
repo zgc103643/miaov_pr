@@ -3,3 +3,8 @@
 2)有发言就将留言的内容添加到box只，并且提示的内容消失
 5)继续输入同样按照顺序去排列
 6)当内容被删除完了之后提示内容显示
+
+笔记：
+1，<input type="button" value="提交" id="send">中type属性定义为submit后，将是提交按钮，表单数据将提交到服务器。
+2,获取textarea输入框中动态输入的文本，用document.getElementById("inMes").value，而不是innerHTML
+3,先保证js里的事件，能正常响应，再将各功能整合

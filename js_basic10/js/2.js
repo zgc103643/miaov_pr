@@ -3,54 +3,35 @@
  */
 window.onload = function () {
     var oSend = document.getElementById("send");
-    var i = 0;
-
-    /* alert(1)*/
-    console.log(1);
-
+    var oInMes = document.getElementById("inMes");
+    var i = 0;/*标识box的序号*/
     oSend.onclick = function () {
-        alert(1);
-        console.log("num");
-        alert(2);
-        var oInMes = document.getElementById("inMes");
-        var sInMes = oInMes.innerHTML;
-        alert("sInMes:"+sInMes);
+        var sInMes = oInMes.value;
+        //alert("sInMes:"+sInMes);
         var num = i % 2;
         createBox(num,sInMes);
         i ++;
+        oInMes.value = "";
     }
 }
 
-/*var i = 0;
-function sendMes(){
-    var oSend = document.getElementById("send");
-
-   /!* alert(1)*!/
-    console.log(1);
-
-    oSend.onclick = function () {
-        alert(1);
-        console.log("num");
-        alert(2);
-        var oInMes = document.getElementById("inMes");
-        var sInMes = oInMes.innerHTML;
-        alert("sInMes:"+sInMes);
-        var num = i % 2;
-        createBox(num,sInMes);
-        i ++;
-    }
-}*/
-
 /*新建一个showbox*/
 function createBox(i,str) {
+    var oCon = document.getElementById("container");
     var oBox = document.createElement("div");
-    oBox.setAttribute("className","show");
+
+    oBox.setAttribute("class","show");
 
     var oLogo = document.createElement("div");
-    oLogo.setAttribute("className","logo");
-    oLogo.innerHTML = '<img src="images/logo'+i+'.png">';
+    oLogo.setAttribute("class","logo");
+    oLogo.innerHTML = '<img src="images/logo'+(i+1)+'.png">';
+
+    oBox.appendChild(oLogo);
 
     var oMes = document.createElement("div");
-    oMes.setAttribute("className","mes-out");
+    oMes.setAttribute("class","mes-out");
     oMes.innerHTML = '<p>'+str+'</p>';
+
+    oBox.appendChild(oMes);
+    oCon.appendChild(oBox);
 }
