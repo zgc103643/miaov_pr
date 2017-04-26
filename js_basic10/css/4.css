@@ -16,13 +16,14 @@ ul,ul2,ul3,ul4{
     vertical-align: middle;
 }
 
-.li1{
+/*.li1,.li2,.li3*/{
     width:100%;
     height:50px;
     background-color: #E15671;
     margin-bottom:10px;
     padding-left:10px;
 }
+
 
 .item2{
     color: #AD7E86;
@@ -38,10 +39,10 @@ ul,ul2,ul3,ul4{
 }
 
 /*设置li前的点*/
-.dot1{
+.dot1,.dot2,.dot3{
     margin-right:10px;
 }
-.dot1 img{
+.dot1 img,.dot2 img,.dot3 img{
     vertical-align: middle;
 }
 

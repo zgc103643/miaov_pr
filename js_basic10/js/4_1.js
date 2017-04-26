@@ -1,5 +1,5 @@
 /**
- * Created by joy on 2017/4/27.--home
+ * Created by Administrator on 2017/4/26.--office
  */
 
 window.onload=function () {
@@ -126,3 +126,4 @@ function hideUl2() {
     }
 
 }
+

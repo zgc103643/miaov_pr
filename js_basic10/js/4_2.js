@@ -1,7 +1,6 @@
 /**
  * Created by joy on 2017/4/27.--home
  */
-
 window.onload=function () {
     var aUl = document.getElementsByTagName("ul");
     var aLi = document.getElementsByTagName("li");
@@ -35,7 +34,7 @@ window.onload=function () {
 
             changeIcon();
             /*typeSrc();*/
-            hideUl(n);
+            hideUl();
         }
 
     }
@@ -56,20 +55,6 @@ function changeIcon(){
     }
 }
 
-/*老版*/
-function changeIcon1(iICon){
-    var aDot = document.getElementsByClassName("dot1");
-    for(var i = 0;i < aDot.length; i++){
-        var oImg = aDot[i].getElementsByTagName("img")[0];
-        if(i <= iICon){
-            oImg.src="images/style1.png";
-        }
-        else{
-            oImg.src="images/style2.png";
-
-        }
-    }
-}
 
 /*打印img的src值*/
 function  typeSrc() {
@@ -82,8 +67,8 @@ function  typeSrc() {
     }
 }
 
-/*如果是减号，一定显示；如果是加号，分两种情况，*/
-function hideUl(iClick){
+/*根据src，显示与否。如果是减号，一定显示；如果是加号，分两种情况，*/
+function hideUl(){
     var aUl = document.getElementsByTagName("ul");
     var aDot = document.getElementsByClassName("dot1");
     /*第一个永远显示*/
@@ -107,22 +92,4 @@ function hideUl(iClick){
     }
 }
 
-/*dot是横线显示ul，是加号隐藏ul（理解不正确）*/
-function hideUl2() {
-    var aUl = document.getElementsByTagName("ul");
-    var aDot = document.getElementsByClassName("dot1");
-    for(var i = 0; i < aDot.length;i ++){
-        var oImg = aDot[i].getElementsByTagName("img")[0];
-        console.log(oImg);
-        if(oImg.getAttribute("src") =="images/style1.png" ){
-            aUl[i].style.display ='block';
-        }
-        else if(oImg.getAttribute("src") =="images/style2.png" ){
-            aUl[i].style.display ='none';
-        }
-        else{
-            console.log("getAttribute nono");
-        }
-    }
 
-}
