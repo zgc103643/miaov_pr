@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>li元素</title>
+    <link rel="stylesheet" href="">
+    <style>
+        body {
+            background-color: #ccc;
+        }
+
+        .ul1 {
+            color: red;
+            width: 300px;
+            list-style:none;
+        }
+
+        .item1 {
+            color: #fff;
+            line-height: 50px;
+            border-radius: 10px;
+            vertical-align: middle;
+
+        }
+
+        .li1 {
+            width: 100%;
+            height: 50px;
+            background-color: #E15671;
+            margin-bottom: 10px;
+            /*list-style: inside url("images/style1.png");*/
+            padding-left: 10px;
+        }
+        .dot{
+            margin-right:10px;
+        }
+        .dot img{
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+<body>
+<ul class="ul1">
+    <li class="li1"><span class="dot"><img src="images/style1.png"></span><span class="item1">第一级菜单</span></li>
+    <li class="li1"><span class="dot"><img src="images/style1.png"></span><span class="item1">第一级菜单</span></li>
+</ul>
+<hr>
+<ul>
+    <li style="background-color: red;">测试</li>
+    <li style="background-color: red;">测试</li>
+    <li style="background-color: red;">测试</li>
+    <li>测试</li>
+</ul>
+<script>
+    var aDot = document.getElementsByClassName("dot");
+    for(var i = 0; i < aDot.length; i++){
+        aDot[i].onclick = function () {
+            var oImg = this.getElementsByTagName("img")[0];
+            oImg.src = "images/style2.png";
+        }
+    }
+</script>
+</body>
+</html>
