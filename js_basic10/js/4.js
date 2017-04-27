@@ -35,7 +35,7 @@ window.onload=function () {
 
             changeIcon();
             /*typeSrc();*/
-            hideUl(n);
+            hideUl();
         }
 
     }
@@ -55,22 +55,6 @@ function changeIcon(){
         }
     }
 }
-
-/*老版*/
-function changeIcon1(iICon){
-    var aDot = document.getElementsByClassName("dot1");
-    for(var i = 0;i < aDot.length; i++){
-        var oImg = aDot[i].getElementsByTagName("img")[0];
-        if(i <= iICon){
-            oImg.src="images/style1.png";
-        }
-        else{
-            oImg.src="images/style2.png";
-
-        }
-    }
-}
-
 /*打印img的src值*/
 function  typeSrc() {
     var aDot = document.getElementsByClassName("dot1");
@@ -82,8 +66,8 @@ function  typeSrc() {
     }
 }
 
-/*如果是减号，一定显示；如果是加号，分两种情况，*/
-function hideUl(iClick){
+/*如果是减号（flag是false），一定显示；如果是加号，分两种情况，*/
+function hideUl2(){
     var aUl = document.getElementsByTagName("ul");
     var aDot = document.getElementsByClassName("dot1");
     /*第一个永远显示*/
@@ -107,22 +91,27 @@ function hideUl(iClick){
     }
 }
 
-/*dot是横线显示ul，是加号隐藏ul（理解不正确）*/
-function hideUl2() {
+function hideUl(){
     var aUl = document.getElementsByTagName("ul");
     var aDot = document.getElementsByClassName("dot1");
-    for(var i = 0; i < aDot.length;i ++){
-        var oImg = aDot[i].getElementsByTagName("img")[0];
-        console.log(oImg);
-        if(oImg.getAttribute("src") =="images/style1.png" ){
+    console.log("aUl.length:" + aUl.length);
+    console.log("aDot.length:" + aDot.length);
+    /*第一个永远显示*/
+    aUl[0].style.display ='block';
+    /*第一个永远显示*/
+    for(var i = 1; i < aDot.length;i ++){
+        if(!aDot[i].flag){
             aUl[i].style.display ='block';
         }
-        else if(oImg.getAttribute("src") =="images/style2.png" ){
-            aUl[i].style.display ='none';
-        }
         else{
-            console.log("getAttribute nono");
+            if(!aDot[i-1].flag){
+                aUl[i].style.display ='block';
+            }
+            else{
+                aUl[i].style.display ='none';
+            }
+            /**/
         }
     }
-
 }
+

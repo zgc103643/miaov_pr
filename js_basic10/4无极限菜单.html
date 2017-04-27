@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无限级菜单</title>
+    <link rel="stylesheet" href="css/4.css">
+    <script src="js/4.js"></script>
+</head>
+<body>
+    <div>
+        <ul class="ul1">
+            <li class="li1">
+                <span class="dot1"><img src="images/style2.png"/></span>
+                <span class="item1">第一级菜单</span>
+                <ul class="ul2" style="display: none;">
+                    <li>
+                        <span class="dot1"><img src="images/style2.png"/></span>
+                        <span class="item2">第二级菜单</span>
+                        <ul class="ul3" style="display: none;">
+                            <li>
+                                <span class="dot1"><img src="images/style2.png"/></span>
+                                <span class="item3">第三级菜单</span>
+                                <ul class="ul4" style="display: none;">
+                                    <li>
+                                        <span class="dot1"><img src="images/style2.png"/></span>
+                                        <span class="item4">第四级菜单</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li><!--二级-->
+                </ul>
+            </li>
+        </ul>
+        <p>实现多级菜单总结：</p>
+        <p>
+            1，点击dot时，设置dot的flag<br/>
+            2，根据dot的flag设置旁边img元素的src(flag为true，src是style1，flag是false，src是style2)<br/>
+            3，根据dot的flag设置ul元素的显示隐藏(分2中情况，1，前一个dot的flag是true，隐藏ul；2，前一个dot的flag是false，显示ul<br/>
+            4，git上克隆代码：https://github.com/zTree/zTree_v3.git
+        </p>
+    </div>
+</body>
+</html>
