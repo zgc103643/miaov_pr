@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上移和下移</title>
+    <style>
+        button{
+            margin-left:10px;
+        }
+        li{
+            margin-top: 10px;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            var aBtn = document.getElementsByTagName("button");
+            for(var i = 0; i < aBtn.length; i ++){
+                newIndex();
+                aBtn[i].onclick = function () {
+                    //alert(this.index);
+                    console.log("aa");
+                    if(this.index % 2 == 0){
+                        fnTop(this,this.index);
+                    }else{
+                        fnBottom(this,this.index);
+                    }
+                }
+
+            }
+        }
+
+        /*元素上升*/
+            function fnTop(oBtn,index){
+                var aBtn = document.getElementsByTagName("button");
+                var aLi = document.getElementsByTagName("li");
+                var oUl = document.getElementsByTagName("ul")[0];
+                if(index > 0){
+                    oUl.insertBefore(aLi[index / 2],aLi[index / 2 - 1]);
+                }
+                else if(index == 0){/*第0行，插入到最下面*/
+                    oUl.appendChild(aLi[0]);
+
+                }
+                else{
+                    alert("index怎么可能时负值呢？");
+                }
+                newIndex();
+
+            };
+
+            /*元素下降*/
+            function fnBottom(oBtn,index) {
+                var aBtn = document.getElementsByTagName("button");
+                var aLi = document.getElementsByTagName("li");
+                var oUl = document.getElementsByTagName("ul")[0];
+                var num = parseInt(index / 2);
+
+                if(num < aLi.length - 2){//从0到倒数第3个元素，查到下下个元素之前
+                    //oUl.insertBefore(aLi[index / 2],aLi[index / 2 + 1]);
+                    oUl.insertBefore(aLi[num],aLi[num + 2]);
+
+                }
+                else if(num == aLi.length - 2){
+                    oUl.appendChild(aLi[num]);//倒数第二个元素，插到ul最后
+                }
+                else if(num == aLi.length - 1){//插到第一行
+                   oUl.insertBefore(aLi[aLi.length - 1],aLi[0]);
+                }
+                newIndex();
+
+            };
+
+            /*更新元素的index值*/
+            function newIndex() {
+                var aBtn = document.getElementsByTagName("button");
+                for(var i = 0; i < aBtn.length; i++){
+                    aBtn[i].index = i;
+                }
+            }
+
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+        <li><span>111锄禾日当午</span><button class="top">上移</button><button>下移</button></li>
+        <li><span>222汗滴禾下土</span><button class="top">上移</button><button>下移</button></li>
+        <li><span>333谁之盘中餐</span><button class="top">上移</button><button>下移</button></li>
+        <li><span>444粒粒皆辛苦</span><button class="top">上移</button><button>下移</button></li>
+        <li><span>555小学古诗词</span><button class="top">上移</button><button>下移</button></li>
+        <li><span>666长大不能忘</span><button class="top">上移</button><button>下移</button></li>
+        <li><span>777长大不能忘</span><button class="top">上移</button><button>下移</button></li>
+        <li><span>888长大不能忘</span><button class="top">上移</button><button>下移</button></li>
+    </ul>
+</body>
+</html>

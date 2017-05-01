@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>升序和降序</title>
+    <style></style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var oUl = document.getElementsByTagName("ul")[0];
+            var aLi = document.getElementsByTagName("li");
+            var aSpan = document.getElementsByTagName("span");
+            var oBtn = document.getElementsByTagName("button")[0];
+            var arr = [];
+            var bFlag = true;//升序和降序标识
+            for(var i = 0; i < aSpan.length; i++){
+                var iNum = parseInt(aSpan[i].innerHTML);
+                arr.push(iNum);
+                aLi[i].index = arr[i];
+            }
+
+            /*添加点击事件*/
+            oBtn.onclick = function () {
+                clickFn(bFlag);
+                bFlag = !bFlag;
+
+            }
+
+            /*点击事件函数*/
+            function clickFn(bOnOff) {
+               sortArr(bOnOff);
+                for(var i = 0; i < arr.length; i++){
+                    for(var j = 0; j < aLi.length; j++){
+                        if(aLi[j].index == arr[i]){
+                            oUl.appendChild(aLi[j]);
+                        }
+                    }
+                }
+            }
+
+            /*排列arr*/
+            function sortArr(flag) {
+                if(flag){
+                    arr.sort(function (a,b) {
+                        return a-b;
+                    });
+                    oBtn.innerHTML = "升序";
+                }
+                else{
+                    arr.sort(function (a,b) {
+                        return b-a;
+                    });
+                    oBtn.innerHTML = "升序";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul>
+    <li>我们的爱<span>1</span></li>
+    <li>爱了就不会回来<span>24</span></li>
+    <li>我是一个小小鸟<span>21</span></li>
+    <li>想要飞得很高<span>8</span></li>
+    <li>早起的虫子被鸟吃<span>12</span></li>
+    <li>早起早睡<span>80</span></li>
+</ul>
+<button type="button">升序</button>
+</body>
+</html>

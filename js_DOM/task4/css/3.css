@@ -1,12 +1,12 @@
 .hot {
     color: deepskyblue;
-   /* background-color: #e8a2f3;*/
     cursor: default;
 }
 
 #cont {
     width: 600px;
     margin: 0 auto;
+    border:5px solid yellowgreen;
 }
 
 #cont h2 {
@@ -18,9 +18,10 @@
     margin-top: 10px;
     margin-bottom: 10px;
     line-height: 2em;
-
 }
-
+#cont p:last-child{
+    margin-bottom: 100px;
+}
 #tips {
     background-color: #3bdef3;
     display: none;

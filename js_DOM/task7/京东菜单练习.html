@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东菜单练习</title>
+    <style>
+        body,div,ul,li,span{
+            padding:0px;
+            margin:0px;
+        }
+        div{
+            border-bottom: 1px solid #ccc;
+            height:50px;
+        }
+        span,ul ,li{
+            float:left;
+            margin-left: 20px;
+        }
+        ul,li{
+            color: #3e84cc;
+            list-style: none;
+            line-height:50px;
+            cursor: pointer;
+        }
+        span{
+            line-height: 50px;
+        }
+        #ul4 li{
+
+            position: relative;
+            margin-right:20px;
+            cursor: default;
+        }
+        .del{
+            position:absolute;
+            left:45px;
+            top:-8px;
+            font-size:8px;
+            cursor: pointer;
+            color:red;
+            -display:none;
+        }
+    </style>
+    <script src="js/index.js"></script>
+</head>
+<body>
+<div>
+    <span>价格：</span>
+    <ul id="ul1">
+        <li>300-699</li>
+        <li>700-1099</li>
+        <li>1100-1999</li>
+        <li>2000-3599</li>
+        <li>3600-4299</li>
+        <li>4300以上</li>
+    </ul>
+</div>
+<div>
+    <span>类别：</span>
+    <ul id="ul2">
+        <li>办公套装</li>
+        <li>文件筐</li>
+        <li>美工刀</li>
+        <li>三针一钉</li>
+        <li>风琴包</li>
+        <li>票夹</li>
+    </ul>
+</div>
+<div>
+    <span>品牌：</span>
+    <ul id="ul3">
+        <li>齐心</li>
+        <li>优比里</li>
+        <li>三木</li>
+        <li>GBC</li>
+        <li>广博</li>
+        <li>晨光</li>
+    </ul>
+</div>
+<ul id="ul4">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

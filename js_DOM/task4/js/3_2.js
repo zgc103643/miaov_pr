@@ -12,7 +12,6 @@ var json = {
 }
 
 window.onload = function () {
-    //alert(json["Netscape"]);
     displayDiv();
 }
 
@@ -21,23 +20,18 @@ function displayDiv() {
     var oCont = document.getElementById("cont");
     var aEm = oCont.getElementsByTagName("em");
     var oTips = document.getElementById("tips");
-    console.log(aEm.length);
+    //console.log(aEm.length);
     for(var i = 0; i < aEm.length; i ++){
         var timer = null;
         aEm[i].onmouseover = function () {
-            console.log( typeof this.innerHTML);
+            //console.log( typeof this.innerHTML);
 
             var sHint = this.innerHTML;
-            console.log(json[sHint][0]);
-            console.log(json[sHint][1]);
+            //console.log(json[sHint][0]);
+            //console.log(json[sHint][1]);
 
             insertElem(json[sHint][0],json[sHint][1]);
-
-            var l = this.offsetLeft;
-            var t = this.offsetTop;
-            oTips.style.display="block";
-            oTips.style.left =l - 50 + 'px';
-            oTips.style.top = t + 25  + 'px';
+            setPosition(this);
             clearTimeout(timer);
             oTips.onmouseover= function (){
                 oTips.style.display="block";
@@ -52,6 +46,18 @@ function displayDiv() {
     }
 }
 
+//设定弹框的位置
+function setPosition(obj){
+    var oTips = document.getElementById("tips");
+    var l = obj.offsetLeft - 50 + 'px';
+    var t = obj.offsetTop - 154+ 'px';
+    //console.log(oTips.offsetHeight);
+    oTips.style.display="block";
+    oTips.style.left =l;
+    oTips.style.top = t;
+
+}
+//给弹框的p加内容，a加href属性
 function insertElem(sStr,sLink) {
     var oTips = document.getElementById("tips");
     var oP = oTips.getElementsByTagName("p")[0];

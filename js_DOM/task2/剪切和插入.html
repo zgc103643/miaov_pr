@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>剪切和插入</title>
+    <style></style>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementsByTagName("button")[0];
+            var oUl = document.getElementsByTagName("ul")[0];
+            var aLi = oUl.getElementsByTagName("li");
+            oBtn.onclick = function(){
+                //oUl.appendChild(aLi[1]);
+                oUl.insertBefore(aLi[2],aLi[0]);
+                //alert("q");
+            }
+
+        }
+    </script>
+</head>
+<body>
+<button>点我</button>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+    </ul>
+</body>
+</html>

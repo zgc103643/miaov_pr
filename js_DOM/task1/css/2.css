@@ -1,0 +1,90 @@
+body, div, textarea, p, input, form, span {
+    margin: 0px;
+    padding: 0px;
+}
+
+#bg {
+    margin: 20px auto;
+    width: 700px;
+    height: 100%;
+    background-color: #897ec6;
+    /*background-image: url("../images/bg.png");*/
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+form {
+   /* background-color: #93e9f3;*/
+    width: 360px;
+    padding-top: 120px;
+    margin: 0 auto;
+    text-align: right;
+
+}
+
+textarea {
+    width: 328px;
+    height: 100px;
+    border:2px solid #51438f;
+    border-radius: 10px;
+    padding:15px;
+    /*不让拖动且无右下角黄框*/
+    resize:none;
+    outline:none;
+}
+#send{
+    margin-top:10px;
+    margin-bottom: 5px;
+    width:96px;
+    height:26px;
+    background-color:#594c94 ;
+    color:#ffffff;
+    border:2px solid #fff;
+    border-radius: 10px;
+    cursor:pointer ;
+}
+.show {
+    width: 360px;
+    /*height:40px;*/
+    margin: 0 auto;
+    margin-top: 12px;
+    /*background-color: #f2d7f3;*/
+    display:table;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+    width: 310px;
+}
+
+
+/*调整文字的居中问题*/
+.mes-out {
+    display:table-cell;
+    vertical-align: middle;
+    text-align: left;
+    width:310px;
+}
+.mes-out p{
+    background-color: #594c94;
+    border-radius: 15px;
+    padding:15px;
+    color:#fff;
+}
+
+/*调整logo的居中*/
+.logo{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    width:50px;
+}
+
+.logo img {
+    vertical-align: middle;
+}
+
