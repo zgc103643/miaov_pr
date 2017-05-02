@@ -3,16 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <title>表格操作</title>
-    <style></style>
-    <script></script>
+    <style type="text/css">
+        th,td{
+            border:1px solid black;
+            padding:5px;
+        }
+        table{
+            border-collapse: collapse;
+            border:1px solid black;
+            margin-top: 20px;
+        }
+        td{
+            text-align: center;
+
+        }
+    </style>
+    <script src="js/index.js"></script>
 </head>
 <body>
 <form>
-    <label>请输入姓名：</label>
-    <input type="text" placeholder="姓名">
-    <label>请输入性别</label>
-    <select></select>
+    <span>请输入姓名：</span>
+    <input type="text" placeholder="姓名" id="name">
+    <span>请输入性别:</span>
+    <select id="sex">
+        <option value="male">男</option>
+        <option value="female" selected>女</option>
+    </select>
+    <span>请输入年龄</span>
+    <input type="text" placeholder="年龄">
+    <input type="button" value="提交">
+    <br/>
+    <span>请选择排序方式：</span>
+    <select>
+        <option value="asd">升序</option>
+        <option value="des">降序</option>
+    </select>
+    <button type="button">批量删除</button>
 </form>
+<table>
+    <thead>
+    <th>
+        全选<input type="checkbox">
+    </th>
+    <th>编号</th>
+    <th>姓名</th>
+    <th>性别</th>
+    <th>年龄</th>
+    <th>操作</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>1</td>
+        <td>Leo</td>
+        <td>男</td>
+        <td>36</td>
+        <td>
+            <button>上移</button>
+            <button>下移</button>
+            <button>删除</button>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>2</td>
+        <td>Mike</td>
+        <td>男</td>
+        <td>30</td>
+        <td>
+            <button>上移</button>
+            <button>下移</button>
+            <button>删除</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </div>
 </body>
 </html>
