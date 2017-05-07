@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>表格操作</title>
     <style type="text/css">
+        body,div,input,span,button{
+            margin:0px;
+            padding:0px;
+        }
         th,td{
             border:1px solid black;
             padding:5px;
@@ -15,7 +19,11 @@
         }
         td{
             text-align: center;
+            padding:10px;
 
+        }
+        .up,.down,.del{
+            margin-right:5px;
         }
     </style>
     <script src="js/index.js"></script>
@@ -26,21 +34,23 @@
     <input type="text" placeholder="姓名" id="name">
     <span>请输入性别:</span>
     <select id="sex">
-        <option value="male">男</option>
-        <option value="female" selected>女</option>
+        <option value="male" selected>男</option>
+        <option value="female">女</option>
+        <option value="unknown">未知</option>
     </select>
     <span>请输入年龄</span>
-    <input type="text" placeholder="年龄">
-    <input type="button" value="提交">
+    <input type="text" placeholder="年龄" id="age">
+    <input type="button" value="提交" id="btn1">
     <br/>
     <span>请选择排序方式：</span>
-    <select>
+    <select id="order">
         <option value="asd">升序</option>
         <option value="des">降序</option>
     </select>
-    <button type="button">批量删除</button>
+    <button type="button" id="sort">排序</button>
+    <button type="button" id="delAll">批量删除</button>
 </form>
-<table>
+<table id="tab">
     <thead>
     <th>
         全选<input type="checkbox">
@@ -54,28 +64,34 @@
     <tbody>
     <tr>
         <td><input type="checkbox"></td>
-        <td>1</td>
-        <td>Leo</td>
-        <td>男</td>
-        <td>36</td>
+        <td><span class="num">1</span></td>
+        <td class="name">Leo</td>
+        <td class="sex">男</td>
+        <td class="age">36</td>
         <td>
-            <button>上移</button>
-            <button>下移</button>
-            <button>删除</button>
+            <button class="up">上移</button><button class="down">下移</button><button class="del">删除</button>
+        </td>
+    </tr>
+<!--    <tr>
+        <td><input type="checkbox"></td>
+        <td><span class="num">2</span></td>
+        <td class="name">Leo</td>
+        <td class="sex">男</td>
+        <td class="age">36</td>
+        <td>
+            <button class="up">上移</button><button class="down">下移</button><button class="del">删除</button>
         </td>
     </tr>
     <tr>
         <td><input type="checkbox"></td>
-        <td>2</td>
-        <td>Mike</td>
-        <td>男</td>
-        <td>30</td>
+        <td><span class="num">3</span></td>
+        <td class="name">Leo</td>
+        <td class="sex">男</td>
+        <td class="age">36</td>
         <td>
-            <button>上移</button>
-            <button>下移</button>
-            <button>删除</button>
+            <button class="up">上移</button><button class="down">下移</button><button class="del">删除</button>
         </td>
-    </tr>
+    </tr>-->
     </tbody>
 </table>
 </div>
