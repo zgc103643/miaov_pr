@@ -3,12 +3,12 @@
  */
 window.onload = function () {
     insetTable();
-    changeColor();
-    insertCol1();
-    insertCol2();
-    clickColor();
-    clickAll();
-    deleteRow();
+    changeColor();//表格隔行换色
+    insertCol1();/*插入勾选框（第一列）*/
+    insertCol2();/*插入删除列（最后一列）*/
+    clickColor();/*勾选时，背景色变色*/
+    clickAll();/*勾选“全选”时，全部选中*/
+    deleteRow();/*点删除时，删除本行代码，其他行重新隔行换色*/
 }
     var aData = [
         {
@@ -165,6 +165,8 @@ function clickColor() {
         }
     }
 }
+
+/*选中时，设置颜色*/
 function setColor() {
     var oTable = document.getElementById("tab");
     var aInput = oTable.getElementsByTagName("input");

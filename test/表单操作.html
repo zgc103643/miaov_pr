@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单操作</title>
+    <style>
+        body,div,input,span,button{
+            margin:0px;
+            padding:0px;
+        }
+        th,td{
+            border:1px solid black;
+            padding:5px;
+        }
+        table{
+            border-collapse: collapse;
+            border:1px solid black;
+            margin-top: 20px;
+        }
+        td{
+            text-align: center;
+            padding:10px;
+
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var arr = [23,12,3,54,2,25];
+            var max = arr[0];
+
+            for(var i=1;i<arr.length;i++){
+                if(arr[i]>max){
+                    max=arr[i];
+                }
+            }
+            alert(max);
+        }
+    </script>
+</head>
+<body>
+   <table id="tab">
+       <thead>
+       <th>选择</th>
+       <th>姓名</th>
+       <th>年龄</th>
+       <th>地区</th>
+       </thead>
+       <tbody>
+       <tr>
+           <td><input type="checkbox"></td>
+           <td>lucy</td>
+           <td>24</td>
+           <td>武汉</td>
+       </tr>
+       <tr>
+           <td><input type="checkbox"></td>
+           <td>Nancy</td>
+           <td>25</td>
+           <td>长沙</td>
+       </tr>
+       <tr>
+           <td><input type="checkbox"></td>
+           <td>Joy</td>
+           <td>26</td>
+           <td>杭州</td>
+       </tr>
+       </tbody>
+   </table>
+    <ul id="ul1">
+        <li>1111</li>
+        <li>2222</li>
+        <li style="background-color: red;">3333</li>
+        <li>4444</li>
+        <li style="background-color: red;">5555</li>
+        <li>6666</li>
+        <li>7777</li>
+    </ul>
+<button id="btn1">批量删除</button>
+</body>
+</html>

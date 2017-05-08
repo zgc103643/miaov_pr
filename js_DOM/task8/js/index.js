@@ -17,11 +17,37 @@ window.onload = function () {
         var sName = oName.value;
         var sSex = aOptions[oSex.selectedIndex].text;
         var iAge = oAge.value;
-        var iLastN = parseInt(aNum[aNum.length -1].innerHTML);
-        var iNum = sortTab(bOnOff) + 1;
 
-        createTable(sName,sSex,iAge,iNum);
-        //createTable(oName.value,aOptions[oSex.selectedIndex].text,oAge.value,(iLastN + 1));
+        /*计算iNum新方法*/
+        /*求出数组的最大值，分aNum为空和不为空2种情况，为空时*/
+        var iNum = 0;
+        //alert(aNum.length);
+        if(!aNum.length){
+            iNum = 1;
+        }
+        else{
+            var max = parseInt(aNum[0].innerHTML);
+            for(var i = 0; i< aNum.length; i++){
+                if(parseInt(aNum[i].innerHTML) >max ){
+                    max=parseInt(aNum[i].innerHTML);
+                }
+            }
+            iNum = max + 1;
+        }
+        /*计算iNum新方法*/
+
+        if(sName==""){
+            alert("请输入用户名！");
+        }
+        else if(iAge==""){
+            alert("请输入年龄！");
+        }
+        else if( isNaN(iAge)){
+            alert("年龄请输入数字！");
+        }
+        else{
+            createTable(sName,sSex,iAge,iNum);
+        }
         newIndex();
 }
 
@@ -46,6 +72,71 @@ window.onload = function () {
     /*上移下移和删除*/
     upAndDown();
 
+    /*设置颜色*/
+    setColor();
+
+    /*删除按钮*/
+    var oDelAll= document.getElementById("delAll");
+    oDelAll.onclick = function(){
+        trIndex();
+        var oTable = document.getElementById("tab");
+        var aInput = oTable.tBodies[0].getElementsByTagName("input");
+        var oTbody = oTable.tBodies[0];
+        var aTr = oTable.tBodies[0].getElementsByTagName("tr");
+        var arr=[];
+        for(var i =0; i < aInput.length; i ++){
+            if(aInput[i].checked){//选中的，被删除
+                arr.push(i);
+            }
+        }
+        //alert(arr.length);
+        if(arr.length == 0){
+            alert("请勾选按钮！");
+        }
+        else if(arr.length > 0){
+            for(var i = 0; i < arr.length; i ++){
+                for(var j = 0; j < aTr.length; j++){
+                    if(aTr[j].index == arr[i]){
+                        oTbody.removeChild(aTr[j]);
+                    }
+                }
+            }
+        }
+        else{
+            alert("怎么到这一步，错了！")
+        }
+        newIndex();
+        setColor();
+    }
+
+    function trIndex() {
+        var oTable = document.getElementById("tab");
+        var aTr = oTable.tBodies[0].getElementsByTagName("tr");
+        for(var i = 0; i < aTr.length; i++){
+            aTr[i].index = i;
+        }
+    }
+
+    /*全选按钮*/
+    var oSelAll = document.getElementById("selAll");
+    var oTable = document.getElementById("tab");
+    var aTr = oTable.tBodies[0].getElementsByTagName("tr");
+    var aInput = oTable.tBodies[0].getElementsByTagName("input");
+    oSelAll.checked = false;
+    oSelAll.onclick = function () {
+        if(this.checked){
+            //alert(aInput.length);
+            for(var i = 0; i < aInput.length; i ++){
+                aInput[i].checked = true;
+            }
+        }
+        else{
+            for(var i = 0; i < aInput.length; i ++){
+                aInput[i].checked = false;
+            }
+        }
+        setColor();
+    }
 }
 
 //元素上移和下移
@@ -82,6 +173,9 @@ function createTable(sName,sSex,iAge,iNum) {
 
     var oTd1 = document.createElement('td');//选择框
     oTd1.innerHTML = '<input type="checkbox">';
+    oTd1.firstElementChild.addEventListener("click",function () {
+        setColor();
+    });
     oTr.appendChild(oTd1);
 
     var oTd2 = document.createElement('td');//编号
@@ -131,6 +225,7 @@ function createTable(sName,sSex,iAge,iNum) {
     oTr.appendChild(oTd6);
 
     oTab.tBodies[0].appendChild(oTr);
+    setColor();
 }
 
 //表格排序
@@ -139,43 +234,49 @@ function sortTab(bOnOff) {
     var oTab = document.getElementById("tab");//table
     var aTr = oTab.tBodies[0].getElementsByTagName("tr");
     var arr = [];
-    for(var i = 0; i < aNum.length; i ++){
-        arr.push(parseInt(aNum[i].innerHTML));
-    }
-
-
-    if(bOnOff){//升序排
-        arr.sort(function (a,b) {
-            return a-b;
-        })
-        /*调试*/
-        for(var i = 0; i < arr.length; i++){
-            console.log('arr['+i+']:' + arr[i]);
-            console.log(typeof arr[i]);
+    //表里面有值
+    if(aNum.length){
+        for(var i = 0; i < aNum.length; i ++){
+            arr.push(parseInt(aNum[i].innerHTML));
         }
-        /*调试*/
-        for(var i = 0; i < arr.length; i++){
-            for(var j = 0; j < aNum.length; j++){
-                if(parseInt(aNum[j].innerHTML) == arr[i]){
-                    oTab.tBodies[0].appendChild(aTr[j]);
+        if(bOnOff){//升序排
+            arr.sort(function (a,b) {
+                return a-b;
+            })
+            /*调试*/
+            for(var i = 0; i < arr.length; i++){
+                console.log('arr['+i+']:' + arr[i]);
+                console.log(typeof arr[i]);
+            }
+            /*调试*/
+            for(var i = 0; i < arr.length; i++){
+                for(var j = 0; j < aNum.length; j++){
+                    if(parseInt(aNum[j].innerHTML) == arr[i]){
+                        oTab.tBodies[0].appendChild(aTr[j]);
+                    }
                 }
             }
+            return arr[arr.length -1];
         }
-        return arr[arr.length -1];
-    }
-    else{//降序排
-        arr.sort(function (a,b) {
-            return b-a;
-        })
-        for(var i = 0; i < arr.length; i++){
-            for(var j = 0; j < aNum.length; j++){
-                if(parseInt(aNum[j].innerHTML) == arr[i]){
-                    oTab.tBodies[0].appendChild(aTr[j]);
+        else{//降序排
+            arr.sort(function (a,b) {
+                return b-a;
+            })
+            for(var i = 0; i < arr.length; i++){
+                for(var j = 0; j < aNum.length; j++){
+                    if(parseInt(aNum[j].innerHTML) == arr[i]){
+                        oTab.tBodies[0].appendChild(aTr[j]);
+                    }
                 }
             }
+            return arr[0];
         }
+    }
+    else{ //表里面没值
+        arr[0] = 0;
         return arr[0];
     }
+    setColor();
 }
 
 //上移,除了第0个，其所在tr都插入到上一个tr前
@@ -194,6 +295,7 @@ function fnTop(index){
         alert("fnTop 函数的index错啦！")
     }
     newIndex();
+    setColor();
 }
 
 //下移，0到倒数3，倒数2，最后1行
@@ -218,6 +320,7 @@ function fnBottom(index){
         alert("fnBottom 函数的index错啦！")
     }
     newIndex();
+    setColor();
 }
 
 //删除
@@ -227,12 +330,9 @@ function delTab(index) {
       var aTr = oTbody.rows;
       var t = parseInt(index/3);
       oTbody.removeChild(aTr[t]);
+    newIndex();
+    setColor();
  }
-
-//批量删除
-function delAll() {
-
-}
 
 /*更新元素的index值*/
 function newIndex() {
@@ -242,3 +342,45 @@ function newIndex() {
         aBtn[i].index = i;
     }
 }
+
+//隔行换色
+function changeColor() {
+    var oTable = document.getElementById("tab");
+    var iLen = oTable.rows.length;
+    console.log("iLen:"+iLen);
+    //console.log(oTable.rows[0]);
+    for(var i = 1; i < iLen; i++){
+        if(i % 2 == 0){
+            oTable.rows[i].style.background = "#88C9E9";
+        }
+        else{
+            oTable.rows[i].style.background = "#FCFDFC";
+        }
+    }
+}
+
+/*选中时，设置颜色*/
+function setColor() {
+    var oTable = document.getElementById("tab");
+    var aInput = oTable.tBodies[0].getElementsByTagName("input");
+    console.log("aInput.length:"+ aInput.length);
+    for(var i =0; i < aInput.length; i ++){
+        if(aInput[i].checked){
+
+            aInput[i].parentNode.parentNode.style.backgroundColor = "#FABDC9";
+        }
+        else{
+            if(i%2 == 0){
+                aInput[i].parentNode.parentNode.style.backgroundColor = "#FCFDFC";
+            }
+            else{
+                aInput[i].parentNode.parentNode.style.backgroundColor = "#88C9E9";
+            }
+        }
+    }
+    newIndex();
+}
+
+Array.max = function( array ){
+    return Math.max.apply( Math, array );
+};

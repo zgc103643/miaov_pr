@@ -36,7 +36,6 @@
     <select id="sex">
         <option value="male" selected>男</option>
         <option value="female">女</option>
-        <option value="unknown">未知</option>
     </select>
     <span>请输入年龄</span>
     <input type="text" placeholder="年龄" id="age">
@@ -53,7 +52,7 @@
 <table id="tab">
     <thead>
     <th>
-        全选<input type="checkbox">
+        全选<input type="checkbox" id="selAll">
     </th>
     <th>编号</th>
     <th>姓名</th>
@@ -62,7 +61,7 @@
     <th>操作</th>
     </thead>
     <tbody>
-    <tr>
+    <!--<tr>
         <td><input type="checkbox"></td>
         <td><span class="num">1</span></td>
         <td class="name">Leo</td>
@@ -71,7 +70,7 @@
         <td>
             <button class="up">上移</button><button class="down">下移</button><button class="del">删除</button>
         </td>
-    </tr>
+    </tr>-->
 <!--    <tr>
         <td><input type="checkbox"></td>
         <td><span class="num">2</span></td>
