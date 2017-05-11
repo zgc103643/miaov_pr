@@ -5,13 +5,28 @@ window.onload = function () {
     var oSend = document.getElementById("send");
     var oInMes = document.getElementById("inMes");
     var i = 0;/*标识box的序号*/
+    /*按钮*/
     oSend.onclick = function () {
-        var sInMes = oInMes.value;
-        //alert("sInMes:"+sInMes);
-        var num = i % 2;
-        createBox(num,sInMes);
-        i ++;
-        oInMes.value = "";
+        if(oInMes.value !=""){
+            var sInMes = oInMes.value;
+            //alert("sInMes:"+sInMes);
+            var num = i % 2;
+            createBox(num,sInMes);
+            i ++;
+            oInMes.value = "";
+        }
+    }
+    oInMes.onkeyup = function (ev) {
+        var ev = ev || event;
+       if(oInMes.value != ""){
+           if(ev.keyCode == 13 && ev.ctrlKey){
+               var num = i % 2;
+               createBox(num,this.value);
+               i ++;
+               oInMes.value = "";
+           }
+       }
+
     }
 }
 
